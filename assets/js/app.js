@@ -154,7 +154,7 @@
       (title ? '<span class="code-title">' + esc(title) + '</span>' : '<span class="code-title"></span>') +
       '<button type="button" class="code-copy" data-action="copy" data-code="' + id + '" aria-label="Copiar código">' + icon('copy') + '<span>Copiar</span></button>' +
       '</figcaption>' +
-      '<pre class="code-body' + (opts.compact ? ' is-compact' : '') + '"><code>' + lines.join('\n') + '</code></pre>' +
+      '<pre class="code-body' + (opts.compact ? ' is-compact' : '') + '" tabindex="0"><code>' + lines.join('\n') + '</code></pre>' +
       '</figure>'
     );
   }
@@ -215,7 +215,7 @@
         return '<ol class="steps">' + b.items.map(function (it) { return '<li>' + md(it) + '</li>'; }).join('') + '</ol>';
       case 'table':
         return (
-          '<div class="table-wrap"><table><thead><tr>' +
+          '<div class="table-wrap" tabindex="0"><table><thead><tr>' +
           b.head.map(function (h) { return '<th scope="col">' + md(h) + '</th>'; }).join('') +
           '</tr></thead><tbody>' +
           b.rows.map(function (r) { return '<tr>' + r.map(function (c) { return '<td>' + md(c) + '</td>'; }).join('') + '</tr>'; }).join('') +
@@ -241,7 +241,7 @@
       puente: 'Tres maneras de que Swift vea tu Kotlin. Detalles en [SKIE, KMP-NativeCoroutines y Swift export](#l-puentes).'
     };
     return (
-      '<figure class="diagram"><div class="diagram-scroll">' + DG.render(name) + '</div>' +
+      '<figure class="diagram"><div class="diagram-scroll" tabindex="0">' + DG.render(name) + '</div>' +
       '<figcaption>' + md(caption || defaults[name] || '') + '</figcaption></figure>'
     );
   }
@@ -395,7 +395,7 @@
     html += '</div></section>';
 
     html += '<section class="home-section versions"><div class="section-head"><h2>Versiones que asume el curso</h2><p>Revisado en noviembre de 2026. Si tu proyecto va por detrás, casi todo aplica igual; donde no, la lección lo indica.</p></div>';
-    html += '<div class="table-wrap"><table><thead><tr><th scope="col">Pieza</th><th scope="col">Versión</th><th scope="col">Por qué importa</th></tr></thead><tbody>' +
+    html += '<div class="table-wrap" tabindex="0"><table><thead><tr><th scope="col">Pieza</th><th scope="col">Versión</th><th scope="col">Por qué importa</th></tr></thead><tbody>' +
       '<tr><td>Swift / Xcode</td><td><code>Swift 6.4</code> · Xcode 27</td><td>Modo de lenguaje Swift 6 y Approachable Concurrency (desde 6.2). <code>@State</code> es una macro desde Xcode 27.</td></tr>' +
       '<tr><td>Despliegue iOS</td><td><code>iOS 17+</code></td><td>Mínimo para el framework Observation (<code>@Observable</code>).</td></tr>' +
       '<tr><td>Kotlin</td><td><code>2.4.x</code></td><td>Swift export pasa a Alpha en 2.4.0; sealed classes en Swift export desde 2.4.20.</td></tr>' +
@@ -786,7 +786,7 @@
     html += '<h1 tabindex="-1">' + esc(c.title) + '</h1>';
     html += '<div class="meta"><span class="chip">' + esc(c.topic) + '</span><span class="chip chip-level">' + esc(c.level) + '</span></div>';
     html += '<p class="lead">' + md(c.intro) + '</p>';
-    html += '<p class="cr-hint">' + icon('target') + 'Hay <strong>' + plural(c.issues.length, 'problema', 'problemas') + '</strong>. Marca al menos una línea de cada uno.</p>';
+    html += '<p class="cr-hint">' + icon('target') + '<span>Hay <strong>' + plural(c.issues.length, 'problema', 'problemas') + '</strong>. Marca al menos una línea de cada uno.</span></p>';
     html += '<div id="cr-body">' + challengeBodyHtml(c) + '</div>';
     html += '<nav class="pager" aria-label="Retos">' +
       (prev ? '<a class="pager-link prev" href="' + challengeHref(prev) + '">' + icon('arrowLeft') + '<span><small>Reto anterior</small><strong>' + esc(prev.title) + '</strong></span></a>' : '<span></span>') +
@@ -872,8 +872,8 @@
         '<dt><span class="gl-term">' + esc(g.term) + '</span><span class="chip">' + esc(g.category) + '</span></dt>' +
         '<dd><p>' + md(g.md) + '</p>';
       if (g.kotlin || g.swift) {
-        html += '<p class="gl-eq">' + (g.kotlin ? '<span class="eq eq-kotlin"><span class="lang-dot kotlin"></span>Kotlin: ' + md(g.kotlin) + '</span>' : '') +
-          (g.swift ? '<span class="eq eq-swift"><span class="lang-dot swift"></span>Swift: ' + md(g.swift) + '</span>' : '') + '</p>';
+        html += '<p class="gl-eq">' + (g.kotlin ? '<span class="eq eq-kotlin"><span class="lang-dot kotlin"></span><span>Kotlin: ' + md(g.kotlin) + '</span></span>' : '') +
+          (g.swift ? '<span class="eq eq-swift"><span class="lang-dot swift"></span><span>Swift: ' + md(g.swift) + '</span></span>' : '') + '</p>';
       }
       if (g.lesson && lessonById[g.lesson]) html += '<a class="text-link" href="#l-' + g.lesson + '">Lección: ' + esc(lessonById[g.lesson].title) + icon('arrowRight') + '</a>';
       html += '</dd></div>';

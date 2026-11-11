@@ -69,7 +69,7 @@
     opts = opts || {};
     var interactive = !!opts.interactive;
     var selected = opts.selected || null;
-    var s = '<svg class="dg dg-arch" viewBox="0 0 720 520" role="img" aria-label="Arquitectura: la app iOS en Swift encima del módulo Shared de Kotlin Multiplatform">';
+    var s = '<svg class="dg dg-arch" viewBox="0 0 720 520" role="' + (interactive ? 'group' : 'img') + '" aria-label="Arquitectura: la app iOS en Swift encima del módulo Shared de Kotlin Multiplatform">';
     s += MARKERS;
     // Zonas
     s += '<rect class="dg-zone dg-zone-swift" x="10" y="10" width="700" height="268" rx="16"/>';

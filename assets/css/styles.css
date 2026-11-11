@@ -15,7 +15,7 @@
   --line-strong: #c3c8d3;
   --fg: #15171c;
   --fg-2: #474d5c;
-  --fg-3: #6b7283;
+  --fg-3: #636a7a;
 
   /* Swift (acento principal) y Kotlin */
   --swift: #e8492c;
@@ -28,7 +28,7 @@
   --kotlin-line: #d3c6fb;
 
   /* Semánticos */
-  --good: #1d7f46;
+  --good: #1a7340;
   --good-soft: #e5f4eb;
   --good-line: #b3dcc3;
   --bad: #c2352b;
@@ -46,7 +46,7 @@
   --code-head: #f7f8fa;
   --code-line: #e3e6ec;
   --code-fg: #1f1f24;
-  --code-gutter: #9aa1b0;
+  --code-gutter: #6e7585;
   --sw-kw: #9b2393;
   --sw-str: #c41a16;
   --sw-com: #5d6c79;
@@ -59,10 +59,10 @@
   --kt-fg: #080808;
   --kt-kw: #0033b3;
   --kt-str: #067d17;
-  --kt-com: #8c8c8c;
+  --kt-com: #737373;
   --kt-num: #1750eb;
   --kt-typ: #000000;
-  --kt-attr: #9e880d;
+  --kt-attr: #7d6b08;
   --kt-fn: #00627a;
   --kt-prop: #871094;
   --kt-interp: #0037a6;
@@ -112,7 +112,7 @@
     --code-head: #26262c;
     --code-line: #33333b;
     --code-fg: #e0e0e2;
-    --code-gutter: #6c7280;
+    --code-gutter: #8b91a0;
     --sw-kw: #ff7ab2;
     --sw-str: #ff8170;
     --sw-com: #7f8c98;
@@ -123,15 +123,15 @@
     --sw-macro: #ffa14f;
     --kt-bg: #2b2b2b;
     --kt-fg: #a9b7c6;
-    --kt-kw: #cc7832;
-    --kt-str: #6a8759;
-    --kt-com: #808080;
+    --kt-kw: #d17f3a;
+    --kt-str: #7ea36b;
+    --kt-com: #969696;
     --kt-num: #6897bb;
     --kt-typ: #a9b7c6;
     --kt-attr: #bbb529;
     --kt-fn: #ffc66d;
-    --kt-prop: #9876aa;
-    --kt-interp: #cc7832;
+    --kt-prop: #a988bb;
+    --kt-interp: #d17f3a;
     --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 10px 28px -14px rgba(0, 0, 0, .6);
     color-scheme: dark;
   }
@@ -171,7 +171,7 @@
   --code-head: #26262c;
   --code-line: #33333b;
   --code-fg: #e0e0e2;
-  --code-gutter: #6c7280;
+  --code-gutter: #8b91a0;
   --sw-kw: #ff7ab2;
   --sw-str: #ff8170;
   --sw-com: #7f8c98;
@@ -182,15 +182,15 @@
   --sw-macro: #ffa14f;
   --kt-bg: #2b2b2b;
   --kt-fg: #a9b7c6;
-  --kt-kw: #cc7832;
-  --kt-str: #6a8759;
-  --kt-com: #808080;
+  --kt-kw: #d17f3a;
+  --kt-str: #7ea36b;
+  --kt-com: #969696;
   --kt-num: #6897bb;
   --kt-typ: #a9b7c6;
   --kt-attr: #bbb529;
   --kt-fn: #ffc66d;
-  --kt-prop: #9876aa;
-  --kt-interp: #cc7832;
+  --kt-prop: #a988bb;
+  --kt-interp: #d17f3a;
   --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 10px 28px -14px rgba(0, 0, 0, .6);
   color-scheme: dark;
 }
