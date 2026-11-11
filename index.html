@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SwiftUI sobre KMP</title>
+  <meta name="claude:viewport-fit-sides" content="cover">
+  <meta name="description" content="Curso interactivo de buenas prácticas en Swift y SwiftUI para apps iOS cuyos casos de uso y repositorios viven en un módulo Kotlin Multiplatform.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Inter:wght@400..800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <button type="button" class="skip" data-action="skip">Saltar al contenido</button>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <button type="button" class="icon-btn menu-btn" id="menu-toggle" data-action="menu" aria-label="Abrir el índice del curso" aria-expanded="false" aria-controls="sidebar">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+      </button>
+      <a class="brand" href="#inicio" aria-label="SwiftUI sobre KMP: inicio">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path class="bm-k" d="M16 17.5L29 23.5L16 29.5L3 23.5Z"/>
+          <path class="bm-s" d="M16 3L29 9L16 15L3 9Z"/>
+        </svg>
+        <span class="brand-name">SwiftUI <span class="brand-sobre">sobre</span> KMP</span>
+      </a>
+      <button type="button" class="search-btn" data-action="search-open" aria-label="Buscar en el curso (atajo: barra /)">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <span>Buscar</span><kbd>/</kbd>
+      </button>
+      <div class="top-progress" id="top-progress" role="img" aria-label="Progreso del curso"></div>
+      <button type="button" class="icon-btn" id="theme-toggle" data-action="theme" aria-label="Cambiar tema"></button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar" id="sidebar" aria-label="Índice del curso"></nav>
+    <main class="main" id="main" tabindex="-1">
+      <noscript><p>Esta aplicación necesita JavaScript para mostrar las lecciones.</p></noscript>
+    </main>
+  </div>
+
+  <div class="scrim" id="scrim" hidden></div>
+
+  <div class="palette" id="palette" hidden>
+    <div class="palette-box" role="dialog" aria-modal="true" aria-labelledby="palette-label">
+      <div class="palette-head">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <label id="palette-label" class="visually-hidden" for="palette-input">Buscar en el curso</label>
+        <input id="palette-input" type="search" placeholder="Buscar: Sendable, onEnum, .task…" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="palette-results" aria-autocomplete="list">
+        <button type="button" class="icon-btn" data-action="pal-close" aria-label="Cerrar la búsqueda"><kbd>Esc</kbd></button>
+      </div>
+      <ul class="palette-results" id="palette-results" role="listbox" aria-label="Resultados"></ul>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <!-- Contenido -->
+  <script src="assets/js/curso.js"></script>
+  <script src="assets/content/01-swift.js"></script>
+  <script src="assets/content/02-concurrencia.js"></script>
+  <script src="assets/content/03-swiftui.js"></script>
+  <script src="assets/content/04-kmp.js"></script>
+  <script src="assets/content/05-testing.js"></script>
+  <script src="assets/content/06-proyecto.js"></script>
+  <script src="assets/content/07-herramientas.js"></script>
+  <script src="assets/content/arquitectura.js"></script>
+  <script src="assets/content/interop.js"></script>
+  <script src="assets/content/retos.js"></script>
+  <script src="assets/content/checklist.js"></script>
+  <script src="assets/content/glosario.js"></script>
+  <!-- Aplicación -->
+  <script src="assets/js/highlight.js"></script>
+  <script src="assets/js/diagrams.js"></script>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

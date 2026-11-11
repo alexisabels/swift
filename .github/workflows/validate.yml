@@ -1,0 +1,18 @@
+name: Validar contenido
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validar lecciones, tests, retos y enlaces
+        run: node scripts/validate.js
+      - name: Empaquetar en un único HTML
+        run: node scripts/build-single.js

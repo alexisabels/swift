@@ -1,0 +1,11 @@
+{
+  "name": "swiftui-sobre-kmp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Curso interactivo de buenas prácticas en Swift y SwiftUI para apps iOS sobre un módulo Kotlin Multiplatform.",
+  "scripts": {
+    "validate": "node scripts/validate.js",
+    "build": "node scripts/build-single.js",
+    "start": "python3 -m http.server 8000"
+  }
+}
