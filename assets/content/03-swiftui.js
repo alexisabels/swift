@@ -817,6 +817,7 @@
             }
           `),
           p('En el [proyecto guiado](#/l/p4-vistas) verás el fake completo, que además sirve para los tests.'),
+          note('warn', 'Preview Content no llega al archivo', 'Si guardas el fake en `Preview Content` (configurado como *Development Assets*), Xcode lo excluye al archivar la app. Todo lo que lo use fuera de los tests (las `#Preview` y cualquier factoría de dependencias para previews) va dentro de `#if DEBUG`, o el archivo de distribución no compilará.'),
           h('@Previewable: estado dentro de la preview'),
           code('swift', S`
             #Preview("Favorito interactivo") {
@@ -825,8 +826,9 @@
             }
           `),
           h('Entorno compartido con PreviewModifier (iOS 18+)'),
-          p('Si veinte previews necesitan el mismo entorno (un `Router`, un tema, datos caros de preparar), no lo repitas: un `PreviewModifier` crea un contexto compartido una vez y lo aplicas como *trait*.'),
+          p('Si veinte previews necesitan el mismo entorno (un `Router`, un tema, datos caros de preparar), no lo repitas: un `PreviewModifier` crea un contexto compartido una vez y lo aplicas como *trait*. Con deployment target iOS 17, marca el modificador, la extensión y cada `#Preview` que lo use con `@available(iOS 18.0, *)`.'),
           code('swift', S`
+            @available(iOS 18.0, *)
             struct AppPreviewEnvironment: PreviewModifier {
                 // Se crea una vez y se reutiliza entre previews
                 static func makeSharedContext() async throws -> Router {
@@ -838,10 +840,12 @@
                 }
             }
 
+            @available(iOS 18.0, *)
             extension PreviewTrait where T == Preview.ViewTraits {
                 @MainActor static var appEnvironment: Self = .modifier(AppPreviewEnvironment())
             }
 
+            @available(iOS 18.0, *)
             #Preview("Fila", traits: .appEnvironment) {
                 BookRow(book: BookSummary.samples[0])
             }

@@ -251,7 +251,7 @@
     {
       term: '#Preview',
       category: 'SwiftUI',
-      md: 'Macro para declarar previews en Xcode. Combinada con fakes, enseña todos los estados de una pantalla sin compilar ni ejecutar KMP.',
+      md: 'Macro para declarar previews en Xcode. Combinada con fakes, enseña todos los estados de una pantalla sin ejecutar KMP (y, si la vista vive en un paquete que no depende de `Shared`, sin compilarlo ni enlazarlo).',
       kotlin: '`@Preview`',
       swift: '`#Preview("Sin conexión") { … }`',
       lesson: 'previews'

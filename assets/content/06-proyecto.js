@@ -303,9 +303,12 @@
                     return AppDependencies(library: KMPLibraryService(container: container))
                 }
 
+                #if DEBUG
+                // FakeLibraryService vive en Preview Content, que no entra al archivar
                 static func preview(_ service: any LibraryService = FakeLibraryService()) -> AppDependencies {
                     AppDependencies(library: service)
                 }
+                #endif
             }
           `, 'App/AppDependencies.swift'),
           note('warn', 'Dos trampas habituales', 'Uno: olvidar `continuation.onTermination`, y Kotlin sigue recogiendo el Flow para nadie. Dos: dejar que un tipo de Kotlin «se escape» en el protocolo (por ejemplo, `func books() -> [Book]`). Si lo ves en una PR, pide un tipo Swift.'),
@@ -752,7 +755,9 @@
           `, 'App/RootView.swift'),
           note('tip', 'La ruta lleva un id, no un objeto', '`Route.book(id:)` es `Hashable` y barato. El detalle carga el libro con su propio ViewModel, así que un deep link (`onOpenURL` → `router.path = [.book(id: …)]`) funciona igual que un toque en la lista.'),
           h('Una preview por estado'),
+          p('El fake vive en `Preview Content`, una carpeta de *Development Assets* que Xcode excluye al archivar. Por eso las previews que lo usan van dentro de `#if DEBUG`: los tests se compilan en Debug y lo ven sin problema.'),
           code('swift', S`
+            #if DEBUG
             #Preview("Con libros") {
                 NavigationStack { LibraryScreen(service: FakeLibraryService()) }
             }
@@ -776,6 +781,7 @@
             #Preview("Contenido · error, sin ViewModel") {
                 LibraryContent(state: .failed(.offline))
             }
+            #endif
           `, 'Features/Library/LibraryScreen+Previews.swift'),
           code('swift', S`
             struct FakeLibraryService: LibraryService {

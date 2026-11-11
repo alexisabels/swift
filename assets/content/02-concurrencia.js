@@ -47,7 +47,7 @@
             good: 'Lineal, los errores se propagan solos y las dos peticiones van **en paralelo** gracias a `async let`.'
           }),
           h('Concurrencia estructurada: `async let` y grupos'),
-          p('`async let` sirve para un número fijo de tareas. Para un número variable, usa un *task group*. En ambos casos las tareas hijas terminan antes de que termine la función: si una falla, las demás se cancelan.'),
+          p('`async let` sirve para un número fijo de tareas. Para un número variable, usa un *task group*. En ambos casos las tareas hijas terminan antes de que termine la función. En un *task group*, el primer error que recoges sale del grupo y cancela al resto; con `async let`, el fallo de una tarea solo se propaga cuando haces `await` de esa variable, y las demás se cancelan al salir del ámbito.'),
           code('swift', S`
             func covers(for books: [BookSummary]) async throws -> [String: Data] {
                 try await withThrowingTaskGroup(of: (String, Data).self) { group in
@@ -68,7 +68,7 @@
             }
           `, 'Un número variable de descargas en paralelo'),
           h('Cancelación cooperativa'),
-          p('Cancelar una tarea **no la detiene**: marca una bandera que el código debe consultar. Las APIs de Apple (`URLSession`, `Task.sleep`) ya lo hacen y lanzan `CancellationError`; en bucles largos sin `await`, hazlo tú.'),
+          p('Cancelar una tarea **no la detiene**: marca una bandera que el código debe consultar. Muchas APIs de Apple ya lo hacen: `Task.sleep` lanza `CancellationError` y `URLSession` cancela la petición y lanza `URLError(.cancelled)` (no `CancellationError`: trátalo también como cancelación al traducir errores). En bucles largos sin `await`, compruébalo tú.'),
           code('swift', S`
             func importAll(_ files: [URL]) async throws {
                 for file in files {

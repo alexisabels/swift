@@ -23,7 +23,7 @@
           h('Lo básico: `@Test` y `#expect`'),
           code('swift', S`
             import Testing
-            @testable import Library
+            @testable import LibraryApp
 
             struct BookFormatterTests {
                 @Test("El año no lleva separador de miles")
@@ -38,24 +38,24 @@
           p('`#expect` acepta cualquier expresión booleana y, si falla, muestra el valor de cada lado: no necesitas `XCTAssertEqual`, `XCTAssertTrue` y compañía. Los tests son funciones normales que pueden ser `async` y `throws`, y viven en structs. Los nombres entre comillas aparecen en el navegador de tests: escríbelos en el idioma del equipo.'),
           compare('swift', S`
             import XCTest
-            @testable import Library
+            @testable import LibraryApp
 
             final class BookFormatterTests: XCTestCase {
                 func testSubtitle() throws {
                     let book = try XCTUnwrap(BookSummary.samples.first)
-                    XCTAssertEqual(BookFormatter.subtitle(for: book), "Ursula K. Le Guin · 1969")
-                    XCTAssertFalse(book.isFavorite)
+                    XCTAssertEqual(BookFormatter.subtitle(for: book), "Gabriel García Márquez · 1967")
+                    XCTAssertTrue(book.isFavorite)
                 }
             }
           `, S`
             import Testing
-            @testable import Library
+            @testable import LibraryApp
 
             struct BookFormatterTests {
                 @Test func subtitle() throws {
                     let book = try #require(BookSummary.samples.first)
-                    #expect(BookFormatter.subtitle(for: book) == "Ursula K. Le Guin · 1969")
-                    #expect(!book.isFavorite)
+                    #expect(BookFormatter.subtitle(for: book) == "Gabriel García Márquez · 1967")
+                    #expect(book.isFavorite)
                 }
             }
           `, {
@@ -77,7 +77,7 @@
                 #expect(LibraryFailure(httpStatus: status) == expected)
             }
           `),
-          p('Cada tupla es un caso independiente: se ejecutan en paralelo y aparecen por separado en el navegador de tests, así que puedes relanzar solo el que falla. Si pasas **dos colecciones** (`arguments: a, b`) se prueban todas las combinaciones; para emparejarlas una a una, usa `zip(a, b)`.'),
+          p('Cada tupla es un caso independiente: se ejecutan en paralelo y aparecen por separado en el navegador de tests. Para relanzar solo el que falla, los argumentos deben poder codificarse (`Codable`, o `Identifiable`/`RawRepresentable` con un valor codificable); aquí bastaría con declarar `LibraryFailure: Codable`. Si pasas **dos colecciones** (`arguments: a, b`) se prueban todas las combinaciones; para emparejarlas una a una, usa `zip(a, b)`.'),
           note('kmp', 'Los argumentos deben ser `Sendable`', 'Los argumentos de un test parametrizado tienen que ser `Sendable`, y los objetos de Kotlin no lo son. Parametriza con valores Swift (códigos, textos, enums) y construye los objetos Kotlin **dentro** del test, por ejemplo `LibraryErrorServer(code: Int32(status))`.'),
           h('Eventos: `confirmation`'),
           code('swift', S`

@@ -680,7 +680,8 @@
           `, 'Integration/Mapping.swift'),
           h('4. Un fake para previews y tests'),
           code('swift', S`
-            // Preview Content/FakeLibraryService.swift
+            // Preview Content/FakeLibraryService.swift: se excluye al archivar,
+            // así que úsalo solo desde tests, previews o código #if DEBUG
             struct FakeLibraryService: LibraryService {
                 var items: [BookSummary]? = BookSummary.samples   // nil: la caché no responde
                 var refreshFailure: LibraryFailure?
